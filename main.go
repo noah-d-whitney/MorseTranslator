@@ -22,7 +22,7 @@ func main() {
 	}
 	input = scanner.Text()
 
-	err, output = translateEToItu(&input)
+	err, output = translateItuToE(&input)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"strings"
 	"unicode"
 )
 
@@ -18,6 +19,26 @@ func translateEToItu(input *string) (error,
 	}
 	println(appConfig.replace)
 
+	return err, &output
+}
+
+func translateItuToE(input *string) (error, *string) {
+	var output string
+	var err error
+	var replaced string
+	words := strings.Split(*input, "  ")
+	for _, w := range words {
+		letters := strings.Split(w, " ")
+		for _, l := range letters {
+			val, ok := ItuToEMap[l]
+			err, replaced = replaceChar(l, val, ok, appConfig.replace)
+			if err != nil {
+				break
+			}
+			output += replaced
+		}
+		output += " "
+	}
 	return err, &output
 }
 
