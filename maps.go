@@ -114,5 +114,4 @@ var ItuToEMap = map[string]string{
 	"*-**-*":  "\"",
 	"***-**-": "$",
 	"*--*-*":  "@",
-	lSpace:    "",
 }

@@ -6,6 +6,8 @@ import (
 	"unicode"
 )
 
+type translateFunc func(input *string) (error, *string)
+
 func translateEToItu(input *string) (error,
 	*string) {
 	var err error
@@ -17,7 +19,6 @@ func translateEToItu(input *string) (error,
 		err, replaced = replaceChar(normalizedC, val, ok, appConfig.replace)
 		output += replaced
 	}
-	println(appConfig.replace)
 
 	return err, &output
 }
